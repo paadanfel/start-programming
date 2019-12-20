@@ -1,4 +1,5 @@
-### Writing loops
+#####
+### Writing for loops
 
 
 # Write a program called sum_to_300 that will calculate the sum 1+2+3+...+300.  
@@ -188,8 +189,65 @@ sum_taylor_series()
 
 
 
+##### 
+### Writing while loops
 
 
+# Write a program called square_greater_than_1777 that will figure out
+# the smallest number n whose square is greater than 1777, without using 
+# the square root function.  The idea is to start a variable n at 1, check 
+# if n*n is greater than 1777, and if not, increase the value of n, check again, and continue.
+
+square_greater_than_1777 <- function(){
+   
+  n <- 1
+  
+  while(n*n < 1777){
+    
+    n <- n+1
+    
+  }
+  
+  return(n)
+  
+}
+
+square_greater_than_1777()
+
+
+
+# Write a program called sum_hits_one_million that will
+# figure out how many terms in the sum 1+2+3+... it requires
+# for the sum to exceed one million.  The idea is to create a 
+# variable that will store the current value of the sum and another 
+# variable that keeps track of what number you are adding to the sum.  
+# Use a while loop to add the current number to the sum repeatedly, and 
+# increase the current number by 1 each time.  The while loop should stop 
+# once the sum exceeds one million, then you tell the value of the last term 
+# that was added to the sum.  Hint:  the sum will be 1000405.
+
+
+sum_hits_one_million <- function(){
+  
+  count <- 1
+  
+  m <- 0
+  
+  while (m < 1000000) {
+    
+    m <- m + count
+    
+    count <- count + 1
+    
+  }
+  
+  return(count)
+  
+}
+
+sum_hits_one_million()
+
+#####
 
 
 
