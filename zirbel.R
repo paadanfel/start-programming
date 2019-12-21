@@ -306,18 +306,125 @@ sum_to_300_updates <- function(){
 sum_to_300_updates()
 
 
+#####
+### Writing programs to make matrices
+
+# Write a program called banded_matrix that uses nested 
+# for loops to produce an N by N (square) matrix A with 0's 
+# down the main diagonal, 1's in the entries just above and below
+# the main diagonal, 2's above and below that, etc.  The matrix should 
+# look like this when N = 5:
+
+banded_matrix <- function(N){
+  
+  m <- matrix(0, N, N)
+  
+  for (i in 1:N) {
+    
+    for (j in 1:N) {
+      
+      m[i, j] <- abs(i - j)
+      
+    }
+    
+  }
+  
+  print(m)
+  
+}
+
+banded_matrix(5)
+banded_matrix(8)
+
+
+# Write a program called banded_matrix_2 which creates an 
+# N by N matrix with 1 on the main diagonal, 1/2 above and 
+# below the main diagonal, 1/3 above and below that, and so on.
+
+## Decimal version
+
+banded_matrix_2 <- function(N){
+  
+  m <- matrix(1, N, N)
+  
+  for (i in 1:N) {
+    
+    for (j in 1:N) {
+      
+      if (!(i == j)) {
+        m[i, j] <- 1/(abs(i - j) + 1)
+      }
+      
+    }
+    
+  }
+  
+  print(m)
+  
+}
+
+banded_matrix_2(5)
+banded_matrix_2(8)
+
+
+## String version
+
+banded_matrix_2_str <- function(N){
+  
+  m <- matrix("1", N, N)
+  
+  for (i in 1:N) {
+    
+    for (j in 1:N) {
+      
+      if (!(i == j)) {
+        m[i, j] <- paste0(1,"/",abs(i - j) + 1)
+      }
+      
+    }
+    
+  }
+  
+  print(m)
+  
+}
+
+banded_matrix_2_str(5)
+banded_matrix_2_str(8)
 
 
 
+# Write a program called circulant_matrix which creates
+# an N by N circulant matrix with 0 on the main diagonal, 1 
+# above the main diagonal and in the lower left corner, 2 above
+# the 1's, and so on, following the example below.  In other words, 
+# the first row contains the numbers 0,1, 2, 3, 4, the next row contains 
+# the same numbers, but with 4 at the beginning, and so on.
 
+circulant_matrix <- function(N){
+  
+  m <- matrix(0, N, N)
+  
+  for (i in 1:N) {
+    
+    for (j in 1:N) {
+      
+      if (i < j) {
+        m[i, j] <- abs(i - j)
+      }else if (i > j){
+        m[i, j] <- N - abs(i - j)
+      }
+      
+    }
+    
+  }
+  
+  print(m)
+  
+  
+}
 
-
-
-
-
-
-
-
+circulant_matrix(5)
 
 
 
