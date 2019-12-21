@@ -440,5 +440,3 @@ circulant_matrix(5)
 
 
 
-
-

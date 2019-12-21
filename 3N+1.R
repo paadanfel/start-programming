@@ -148,3 +148,126 @@ multiple_three_N <- function(){
 }
 
 multiple_three_N()
+
+
+
+
+##################
+#### GRAPHING ####
+##################
+
+three_N_with_max_value_only <- function(N){
+  
+  m <- 0
+  
+  while (N != 1){
+    
+    if (N > m) {
+      m <- N
+    }
+    
+    if (N/2 == as.integer(N/2)) { # N is even
+      N <- N/2
+    }else{ # N is odd
+      N <- 3 * N + 1
+    }
+  
+  }
+  
+  return(m)
+  
+}
+
+
+three_N_with_count_only <- function(N){
+  
+  count <- 0
+  
+  while (N != 1){
+    
+    count <- count + 1
+    
+    if (N/2 == as.integer(N/2)) { # N is even
+      N <- N/2
+    }else{ # N is odd
+      N <- 3 * N + 1
+    }
+   
+  }
+  
+  return(count)
+  
+}
+
+
+data <- data.frame()
+
+for (i in 2:400) {
+  data <- rbind(data, c(i,three_N_with_max_value_only(i), three_N_with_count_only(i)))
+}
+
+names(data) <- c("N", "max_value", "steps_count")
+
+
+library(ggplot2)
+
+png(file = "N_vs_max_value.png")
+
+ggplot(data, aes(N, max_value)) +
+  geom_point(alpha = 1/1.7, size = 3, col = "steelblue") + 
+  labs(title = "Max value as a function of N", y = "Max Value")
+
+dev.off()
+  
+
+png(file = "max_value_vs_steps_count.png")
+
+ggplot(data, aes(max_value, steps_count)) +
+  geom_point(alpha = 1/3, size = 3, col = "steelblue") + 
+  geom_smooth(method = "lm") + 
+  labs(title = "Max value Vs Steps count", x = "Max Value", y = "Steps Count")
+
+dev.off()
+
+
+three_N_visits <- function(N){
+  
+  visits <- N
+  
+  #visits <- rbind(visits, N)
+  
+  while (N != 1){
+    
+    if (N/2 == as.integer(N/2)) { # N is even
+      N <- N/2
+    }else{ # N is odd
+      N <- 3 * N + 1
+    }
+    
+    visits <- c(visits, N)
+    
+  }
+  
+  return(visits)
+}
+
+three_N_visits(5)
+
+
+data <- c()
+
+for (i in 2:400) {
+  
+  data <- c(data, three_N_visits(i))
+  
+}
+
+data <- data.frame(data)
+
+png(file = "all_visits.png")
+
+ggplot(data, aes(data)) + 
+  geom_histogram(bins = 100) + 
+  labs(title = "Visits", subtitle = "All visits for N from 2 to 400", x = "Visits", y = "Frequency")
+  
+dev.off()
