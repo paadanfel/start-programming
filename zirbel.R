@@ -248,6 +248,64 @@ sum_hits_one_million <- function(){
 sum_hits_one_million()
 
 #####
+### If-else statements
+
+# Write a program called sum_to_300_first_sums which will 
+# use a for loop to calculate the sum 1+2+3+...+300 and which
+# will print the value of the current sum if that value is less 
+# than 40000, and which will print "The sum is over 40000" if not.
+
+
+sum_to_300_first_sums <- function(){
+  
+  s <- 0
+  
+  for (i in 1:300) {
+    
+    s <- s + i
+    
+    if (s < 40000) {
+      print(paste0("The sum is ",s))
+    }else{
+      print(paste0("The sum is over 40000"))
+    }
+    
+  }
+  
+  
+}
+
+sum_to_300_first_sums()
+
+
+# Write a program called sum_to_300_updates to calculate 
+# the sum 1+2+3+...+300.  Display the total after every 20 
+# terms by using an if statement to check if the current number 
+# of terms is a multiple of 20.  The basic idea is this:  calculate 
+# i/20 as a decimal and also calculate i/20 rounded to the nearest integer.  
+# If they are equal, then i is a multiple of 20, and then you print the sum. Different
+# programming languages use different commands to round to the nearest integer.  Some programming 
+# languages calculate i/20 as a decimal, while others return the integer part of the quotient, so that 35/20 = 1
+
+sum_to_300_updates <- function(){
+  
+  s <- 0
+  
+  for (i in 1:300) {
+    
+    s <- s + i
+    
+    if (i/20 == as.integer(i/20)) {
+      print(paste0("The sum at ",i, "th term is ", s))
+    }
+    
+  }
+  
+}
+
+sum_to_300_updates()
+
+
 
 
 
